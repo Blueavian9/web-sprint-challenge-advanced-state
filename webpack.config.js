@@ -1,32 +1,32 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
-const DEVELOPMENT = 'development'
-const ENV = process.env.NODE_ENV || DEVELOPMENT
-const IS_DEV = ENV === DEVELOPMENT
+const DEVELOPMENT = "development";
+const ENV = process.env.NODE_ENV || DEVELOPMENT;
+const IS_DEV = ENV === DEVELOPMENT;
 
-const HTML_LOADER = 'html-loader'
-const STYLE_LOADER = 'style-loader'
-const CSS_LOADER = 'css-loader'
-const BABEL_LOADER = 'babel-loader'
-const STRING_REPLACE_LOADER = 'string-replace-loader'
+const HTML_LOADER = "html-loader";
+const STYLE_LOADER = "style-loader";
+const CSS_LOADER = "css-loader";
+const BABEL_LOADER = "babel-loader";
+const STRING_REPLACE_LOADER = "string-replace-loader";
 
-const SERVER_URL = /http:\/\/localhost:9000/g
-const FRONTEND_PORT = 3000
+const SERVER_URL = /http:\/\/localhost:9000/g;
+const FRONTEND_PORT = 3000;
 
-const INDEX_HTML_PATH = './frontend/index.html'
-const INDEX_JS_PATH = './frontend/index.js'
-const DIST_FOLDER = 'dist'
-const BUNDLE_FILE = 'index.js'
+const INDEX_HTML_PATH = "./frontend/index.html";
+const INDEX_JS_PATH = "./frontend/index.js";
+const DIST_FOLDER = "dist";
+const BUNDLE_FILE = "index.js";
 
-const SOURCE_MAP = IS_DEV ? 'source-map' : false
+const SOURCE_MAP = IS_DEV ? "source-map" : false;
 
 const config = {
   entry: INDEX_JS_PATH,
   mode: ENV,
   output: {
     filename: BUNDLE_FILE,
-    publicPath: '/',
+    publicPath: "/",
     path: path.resolve(__dirname, DIST_FOLDER),
   },
   devtool: SOURCE_MAP,
@@ -46,7 +46,7 @@ const config = {
       {
         test: /\.html$/i,
         exclude: /node_modules/,
-        use: { loader: HTML_LOADER }
+        use: { loader: HTML_LOADER },
       },
       {
         test: /\.m?js$/,
@@ -56,14 +56,11 @@ const config = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [
-          STYLE_LOADER,
-          CSS_LOADER,
-        ],
+        use: [STYLE_LOADER, CSS_LOADER],
       },
     ],
   },
-}
+};
 
 if (!IS_DEV) {
   config.module.rules.push({
@@ -73,10 +70,10 @@ if (!IS_DEV) {
       loader: STRING_REPLACE_LOADER,
       options: {
         search: SERVER_URL,
-        replace: '',
+        replace: "",
       },
     },
-  })
+  });
 }
 
-module.exports = config
+module.exports = config;
