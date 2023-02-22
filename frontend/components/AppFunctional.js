@@ -121,7 +121,7 @@ export default function AppFunctional(props) {
           DOWN
         </button>
         <button id="reset" onClick={move}>
-          reset
+          resetw
         </button>
       </div>
       <form onSubmit={onSubmit}>
