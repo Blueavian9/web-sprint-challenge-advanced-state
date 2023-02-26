@@ -27,6 +27,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      
         <Message />
         <h1>Advanced State</h1>
         <nav>
