@@ -3,7 +3,7 @@
 // 👉 DO NOT CHANGE THIS FILE 👈
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./components/App";
+import App from "./components/App.js";
 import "./styles/reset.css";
 import "./styles/styles.css";
 
